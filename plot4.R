@@ -12,8 +12,14 @@ df <- read.csv.sql ('household_power_consumption.txt',Query,sep=';')
 
 
 ##setup rows, cols
-png (filename='plot4.png')
+png (filename='c:/data/proj1/code/plot4.png')
 par(mfrow=c(2,2))
+
+
+#df[,1] <- as.Date(df[,1],format = '%d/%m/%Y')
+dt <- paste (as.character(df$Date),df$Time,sep=' ')
+dt <- strptime (dt, format='%d/%m/%Y %H:%M:%S')
+df$DateTime <- dt
 
 
 ##plot em!
