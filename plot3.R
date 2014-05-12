@@ -12,13 +12,16 @@ df <- read.csv.sql ('household_power_consumption.txt',Query,sep=';')
 
 
 
-#plot em!
-plot2 <- as.numeric(df$Global_active_power)
+##plot em!
+plot2 <- as.numeric(df$Sub_metering_1)
 days <- strptime(paste(df$Date, df$Time), format="%d/%m/%Y %H:%M:%S")
-plot(days, plot2, xlab="", ylab="Global Active Power (kilowatts)", type="l")
+
+plot(days, plot2, xlab="", ylab='Energy sub metering', type="l")
+lines(df$DateTime, df$Sub_metering_2)
+lines(df$DateTime, df$Sub_metering_3)
 
 ##Start drawing the PNG
-dev.copy(png, file = "c:/data/proj1/code/plot2.png", width = 480, height = 480, units = "px")
+dev.copy(png, file = "c:/data/proj1/code/plot3.png", width = 480, height = 480, units = "px")
 dev.off()
 
 
